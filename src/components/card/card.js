@@ -31,7 +31,16 @@ export default function Card({
                         <span className={styles.number}>{number}</span>
                     </div>
                     <div className={styles.row}>
-                        {types.map(type => <Chip key={type} text={type} />)}
+                        {types.map(type => (
+                            <Chip
+                                key={type}
+                                text={type}
+                                style={{
+                                    backgroundColor: `var(--type-${type?.toLowerCase?.()})`,
+                                    color: `var(--on-type-${type?.toLowerCase?.()})`,
+                                }}
+                            />
+                        ))}
                     </div>
                     {!!actions && (
                         <div className={actionsClassNames}>

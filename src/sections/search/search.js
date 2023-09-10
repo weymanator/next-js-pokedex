@@ -1,5 +1,3 @@
-'use client'
-
 import { useEffect, useMemo, useState } from 'react'
 import PokemonService from '@/services/pokemon';
 import TextField from '@/components/textField'
@@ -10,7 +8,6 @@ import Button from '@/components/button';
 import { useDispatch } from 'react-redux';
 import { actionTypes } from '@/store';
 import { Queue } from '@/utils/promises';
-
 
 let firstLoad = true;
 

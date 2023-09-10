@@ -39,6 +39,48 @@
   --on-surface-variant: #49454E;
   --background: #FEF7FF;
   --outline: #79747E;
+
+  /* 
+  * Pokemon types color pallete from 
+  * https://gist.github.com/apaleslimghost/0d25ec801ca4fc43317bcff298af43c3
+  */
+
+  --type-normal: #A8A77A;
+  --on-type-normal: var(--on-surface);
+	--type-fire: #EE8130;
+  --on-type-fire: var(--on-surface);
+	--type-water: #6390F0;
+  --on-type-water: var(--on-surface);
+	--type-electric: #F7D02C;
+  --on-type-electric: var(--on-secondary);
+	--type-grass: #7AC74C;
+  --on-type-grass: var(--on-surface);
+	--type-ice: #96D9D6;
+  --on-type-ice: var(--on-secondary);
+	--type-fighting: #C22E28;
+  --on-type-fighting: var(--on-surface);
+	--type-poison: #A33EA1;
+  --on-type-poison: var(--on-surface);
+	--type-ground: #E2BF65;
+  --on-type-ground: var(--on-secondary);
+	--type-flying: #A98FF3;
+  --on-type-flying: var(--on-surface);
+	--type-psychic: #F95587;
+  --on-type-psychic: var(--on-surface);
+	--type-bug: #A6B91A;
+  --on-type-bug: var(--on-surface);
+	--type-rock: #B6A136;
+  --on-type-rock: var(--on-surface);
+	--type-ghost: #735797;
+  --on-type-ghost: var(--on-surface);
+	--type-dragon: #6F35FC;
+  --on-type-dragon: var(--on-surface);
+	--type-dark: #705746;
+  --on-type-dark: var(--on-surface);
+	--type-steel: #B7B7CE;
+  --on-type-steel: var(--on-secondary);
+	--type-fairy: #D685AD;
+  --on-type-fairy: var(--on-surface);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -72,4 +114,20 @@ body {
   height: 100%;
   color: var(--on-surface);
   background: var(--surface-container-lowest);
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--surface-container);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--surface-container-hight);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--surface-container-hightest);
 }
