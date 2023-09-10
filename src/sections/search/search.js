@@ -9,6 +9,7 @@ import ActivityIndicator from '@/components/activityIndicator';
 import Button from '@/components/button';
 import { useDispatch } from 'react-redux';
 import { actionTypes } from '@/store';
+import { Queue } from '@/utils/promises';
 
 
 let firstLoad = true;
@@ -18,6 +19,7 @@ export default function SearchSection() {
     const [loading, setLoading] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const searchService = useMemo(() => new PokemonService('https://pokeapi.co/'), [])
+    const queue = useMemo(() => new Queue, [])
 
     const dispatch = useDispatch()
 
@@ -29,11 +31,13 @@ export default function SearchSection() {
 
         setLoading(true)
 
-        const timeout = setTimeout(async () => {
-            const results = await searchService.findByName(query)
-            setSearchResults(results);
-            setLoading(false)
-        }, 600)
+        const timeout = setTimeout(() => {
+            queue.add((async () => {
+                const results = await searchService.findByName(query)
+                setSearchResults(results);
+                setLoading(false)
+            }))
+        }, 1000)
 
         return function clean() {
             clearTimeout(timeout)
