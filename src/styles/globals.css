@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 :root {
+  --text-body: 12px;
+  --text-heading: 24px;
+  --text-subheading: 16px;
+  --text-lg: 14px;
+  --text-s: 10px;
+
   --round-hight: 20px;
   --round: 14px;
   --round-low: 8px;
