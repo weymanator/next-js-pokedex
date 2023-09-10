@@ -16,7 +16,8 @@ export const persistConfig = {
 
 export const actionTypes = {
     ADD: 'ADD',
-    REMOVE: 'REMOVE'
+    REMOVE: 'REMOVE',
+    CLEAN: 'CLEAN',
 }
 
 export const reducer = (state, action) => {
@@ -33,6 +34,8 @@ export const reducer = (state, action) => {
             const clone = [...state.collection]
             if (index >= 0) clone.splice(index, 1)
             return { collection: clone }
+        case actionTypes.CLEAN:
+            return defaultState
         default:
             return state
     }
