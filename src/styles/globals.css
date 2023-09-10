@@ -34,7 +34,7 @@
   --surface-container-low: #F7F2FA;
   --surface-container: #F3EDF7;
   --surface-container-hight: #ECE6F0;
-  --surface-container-hightest: #E6E0E9;
+  --surface-container-highest: #E6E0E9;
   --on-surface: #1C1B1F;
   --on-surface-variant: #49454E;
   --background: #FEF7FF;
@@ -98,7 +98,7 @@
     --surface-container-low: #1D1B20;
     --surface-container: #211F26;
     --surface-container-hight: #2B2930;
-    --surface-container-hightest: #36343B;
+    --surface-container-highest: #36343B;
     --on-surface: #E6E1E5;
     --on-surface-variant: #CAC4D0;
     --background: #E6E1E5;
@@ -129,5 +129,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--surface-container-hightest);
+  background-color: var(--surface-container-highest);
 }
