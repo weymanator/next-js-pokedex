@@ -55,6 +55,8 @@ export default function SearchSection() {
 
     const handleAdd = (pokemon) => () => dispatch({ type: actionTypes.ADD, pokemon })
 
+    const handleClean = () => setQuery('');
+
     return (
         <section className={styles.root}>
             <div>
@@ -62,6 +64,11 @@ export default function SearchSection() {
                     placeholder="Search a Pokemon by name"
                     value={query}
                     onChange={handleQueryChange}
+                    trailingIcon={!!query && (
+                        <div className={styles['clean-icon']} onClick={handleClean}>
+                            <span class="material-icons">close</span>
+                        </div>
+                    )}
                 />
             </div>
             {loading && <div className={styles['feedback-container']}><ActivityIndicator /></div>}
