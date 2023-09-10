@@ -1,12 +1,22 @@
+import { pick } from 'lodash'
 import { capital } from "@/utils/strings"
 
 export default class Pokemon {
     constructor(raw) {
-        this.__raw = raw
+        this.__raw = pick(raw, [
+            'id',
+            'localId',
+            'sprites',
+            'name',
+            'types',
+        ])
     }
 
     get cover() {
-        return this.__raw?.sprites?.other?.['official-artwork']?.front_default ?? this.__raw?.sprites?.front_default
+        return (
+            this.__raw?.sprites?.other?.['official-artwork']?.front_default
+            ?? this.__raw?.sprites?.front_default
+        )
     }
 
     get name() {

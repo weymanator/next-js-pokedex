@@ -3,10 +3,23 @@ import Image from "next/image";
 import styles from './card.module.sass'
 import Chip from "@/components/chip";
 
-export default function Card({ img, name, number, types, horizontal, actions }) {
-    const containerClassNames = clsx(styles.container, { [styles['container--horizontal']]: horizontal })
+export default function Card({
+    img,
+    name,
+    number,
+    types,
+    horizontal,
+    actions,
+    contentContainerClassNames,
+    actionsContainerClassNames,
+    floatingContainerClassNames,
+    floatingIcon,
+    onFloatingClicked,
+}) {
+    const containerClassNames = clsx(styles.container, { [styles['container--horizontal']]: horizontal }, contentContainerClassNames)
     const contentClassNames = clsx(styles.content, { [styles['content--horizontal']]: horizontal })
-    const actionsClassNames = clsx(styles.row, styles['row--right'])
+    const actionsClassNames = clsx(styles.row, actionsContainerClassNames)
+    const floatingClassNames = clsx(styles.floating, floatingContainerClassNames)
 
     return (
         <div className={containerClassNames}>
@@ -27,6 +40,11 @@ export default function Card({ img, name, number, types, horizontal, actions }) 
                     )}
                 </div>
             </div>
+            {floatingIcon && (
+                <div className={floatingClassNames} onClick={onFloatingClicked}>
+                    <span class="material-icons">close</span>
+                </div>
+            )}
         </div>
     )
 }

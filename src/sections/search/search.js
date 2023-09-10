@@ -7,6 +7,8 @@ import Card from '@/components/card';
 import styles from './search.module.sass'
 import ActivityIndicator from '@/components/activityIndicator';
 import Button from '@/components/button';
+import { useDispatch } from 'react-redux';
+import { actionTypes } from '@/store';
 
 
 let firstLoad = true;
@@ -16,6 +18,8 @@ export default function SearchSection() {
     const [loading, setLoading] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const searchService = useMemo(() => new PokemonService('https://pokeapi.co/'), [])
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (firstLoad) {
@@ -40,7 +44,7 @@ export default function SearchSection() {
         setQuery(event.target.value)
     }
 
-    const handleAdd = (pokemon) => () => console.log(pokemon)
+    const handleAdd = (pokemon) => () => dispatch({ type: actionTypes.ADD, pokemon })
 
     return (
         <section className={styles.root}>

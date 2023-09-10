@@ -3,3 +3,24 @@
     background-color: var(--surface-container-low)
     padding: var(--padding)
     border-radius: var(--round)
+    overflow-y: auto
+.feedback-container
+    flex: 1
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+.feedback__text
+    font-size: 28px
+.grid
+    display: grid
+    grid-template-columns: repeat(5, minmax(0, 1fr))
+    gap: var(--gap)
+
+.card
+    cursor: pointer
+    .card-floating
+        display: none
+    &:hover
+        .card-floating
+            display: flex
