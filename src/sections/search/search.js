@@ -42,7 +42,7 @@ export default function SearchSection() {
         return function clean() {
             clearTimeout(timeout)
         }
-    }, [query, searchService])
+    }, [query, searchService, queue])
 
     const handleQueryChange = (event) => {
         setQuery(event.target.value)
