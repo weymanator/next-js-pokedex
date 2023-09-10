@@ -2,12 +2,12 @@ import axios from "axios";
 
 export default class CoreService {
     constructor(base) {
-        this.base = base;
+        this.base = base
     }
     
     clearTextParam(param) {
         if (param == null) return
-        return param.trim();
+        return param.trim()
     }
 
     join(...paths) {
@@ -15,19 +15,19 @@ export default class CoreService {
     }
 
     safeArray(item) {
-        if (Array.isArray(item)) return item;
-        return [item];
+        if (Array.isArray(item)) return item
+        return [item]
     }
 
     handleError(error) {
         if (error.response) {
             if (error.response.status === 404) {
-                return undefined;
+                return undefined
             } else {
-                return error.response.data
+                throw error
             }
         }
-        return error.message
+        throw error
     }
 
     async request({ method = 'GET', path, params }) {

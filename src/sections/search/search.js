@@ -14,11 +14,14 @@ let firstLoad = true;
 export default function SearchSection() {
     const [query, setQuery] = useState();
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState();
     const [searchResults, setSearchResults] = useState([]);
     const searchService = useMemo(() => new PokemonService('https://pokeapi.co/'), [])
     const queue = useMemo(() => new Queue, [])
 
     const dispatch = useDispatch()
+
+    const handleError = (error) => setError(`${error.message}. Try again`)
 
     useEffect(() => {
         if (firstLoad) {
@@ -30,8 +33,12 @@ export default function SearchSection() {
 
         const timeout = setTimeout(() => {
             queue.add((async () => {
-                const results = await searchService.findByName(query)
-                setSearchResults(results);
+                try {
+                    const results = await searchService.findByName(query)
+                    setSearchResults(results);
+                } catch (error) {
+                    handleError(error)
+                }
                 setLoading(false)
             }))
         }, 1000)
@@ -42,6 +49,7 @@ export default function SearchSection() {
     }, [query, searchService, queue])
 
     const handleQueryChange = (event) => {
+        setError(undefined);
         setQuery(event.target.value)
     }
 
@@ -57,7 +65,12 @@ export default function SearchSection() {
                 />
             </div>
             {loading && <div className={styles['feedback-container']}><ActivityIndicator /></div>}
-            {(query && !loading && searchResults.length === 0) && (
+            {(!loading && !!error) && (
+                <div className={styles['feedback-container']}>
+                    <span>{error}</span>
+                </div>
+            )}
+            {(query && !loading && !error && searchResults.length === 0) && (
                 <div className={styles['feedback-container']}>
                     <span>No pokemons where found</span>
                 </div>
