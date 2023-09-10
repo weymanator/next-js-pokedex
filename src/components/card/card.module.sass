@@ -23,6 +23,7 @@
 .row
     display: flex
     flex-direction: row
+    flex-wrap: wrap
     gap: var(--gap-low)
     align-items: baseline
 .row--right
@@ -44,3 +45,11 @@
     align-items: center
     &:hover
         background-color: var(--surface-container-hight)
+.image
+    width: 100%
+    height: 100%
+
+@media (max-width: 600px)
+    .image
+        width: 50%
+        height: 50%

@@ -1,6 +1,4 @@
 .root
-    flex: 1
-    max-width: 560px
     background-color: var(--surface-container-low)
     padding: var(--padding)
     border-radius: var(--round)
@@ -11,3 +9,8 @@
     padding: var(--padding)
 .results-container
     padding: var(--padding) 0
+
+@media (min-width: 1440px)
+    .root
+        flex: 0.3
+        max-width: 560px

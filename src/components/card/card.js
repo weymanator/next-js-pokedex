@@ -24,7 +24,7 @@ export default function Card({
     return (
         <div className={containerClassNames}>
             <div className={contentClassNames}>
-                <Image src={img} width={146} height={138} alt={name} />
+                <Image src={img} width={146} height={138} alt={name} className={styles.image} />
                 <div className={styles.col}>
                     <div className={styles.row}>
                         <span className={styles.name}>{name}</span>
